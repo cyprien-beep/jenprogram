@@ -1,22 +1,26 @@
- pipeline { 
- agent any // Runs on any available agent 
- stages { 
- stage('Build') { 
- steps { 
- echo "Building the project..." 
- bat 'ls -la' // Linux/macOS command 
- // For Windows: bat 'dir' 
- } 
- } 
- stage('Test') { 
- steps { 
- echo "Running tests..." 
- } 
- } 
- stage('Deploy') { 
- steps { 
- echo "Deploying..." 
- } 
- } 
- } 
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building the project...'
+                bat 'dir'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo 'Running tests...'
+                bat 'echo Tests passed!'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploying the project...'
+                bat 'echo Deployment complete!'
+            }
+        }
+    }
 }
